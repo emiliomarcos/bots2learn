@@ -1,4 +1,4 @@
-import { useState, ChangeEvent } from "react"
+import { useState, ChangeEvent } from 'react'
 import './App.css'
 
 export default function App() {
@@ -8,11 +8,26 @@ export default function App() {
   function handleFileChange(e: ChangeEvent<HTMLInputElement>) {
     const selectedFile = e.target.files?.[0];
 
-    if (selectedFile && selectedFile.type === "application/pdf") {
+    if (selectedFile && selectedFile.type === 'application/pdf') {
       setFile(selectedFile);
     } else {
-      console.error("Invalid File");
+      console.error('Invalid file');
       setFile(null);
+    }
+  }
+
+  async function handleFileUpload() {
+    if (file) {
+      const formData = new FormData();
+      formData.append('file', file)
+
+    } else {
+      console.log('Please select file')
+    }
+    try {
+      fetch('https://localhost:5000/bot2')
+    } catch (error) {
+      console.error(error)
     }
   }
 
