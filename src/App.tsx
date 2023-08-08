@@ -17,15 +17,23 @@ export default function App() {
   }
 
   async function handleFileUpload() {
-    if (file) {
-      const formData = new FormData();
-      formData.append('file', file)
-
-    } else {
-      console.log('Please select file')
+    if (!file) {
+      console.log('Please select file');
+      return;
     }
+
+    const formData = new FormData();
+    formData.append('file', file);
+
     try {
-      fetch('https://localhost:5000/bot2')
+      const response = await fetch('http://localhost:5000/bot2', {
+        method: 'POST',
+        body: formData
+      })
+
+      const data = await response.json();
+      console.log(data);
+
     } catch (error) {
       console.error(error)
     }
@@ -36,7 +44,7 @@ export default function App() {
       <h2>Generate Questions and Answers</h2>
       <div className='file-container'>
         <input type='file' onChange={handleFileChange}></input>
-        <button>Send File</button>
+        <button onClick={handleFileUpload}>Send File</button>
       </div>
     </>
   )
