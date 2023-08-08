@@ -1,16 +1,28 @@
-import { useState } from 'react'
+import { useState, ChangeEvent } from "react"
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+
+  const [file, setFile] = useState<File | null>(null)
+
+  function handleFileChange(e: ChangeEvent<HTMLInputElement>) {
+    const selectedFile = e.target.files?.[0];
+
+    if (selectedFile && selectedFile.type === "application/pdf") {
+      setFile(selectedFile);
+    } else {
+      console.error("Invalid File");
+      setFile(null);
+    }
+  }
 
   return (
     <>
-      <button onClick={() => setCount((count) => count + 1)}>
-        count is {count}
-      </button>
+      <h2>Generate Questions and Answers</h2>
+      <div className='file-container'>
+        <input type='file' onChange={handleFileChange}></input>
+        <button>Send File</button>
+      </div>
     </>
   )
 }
-
-export default App
