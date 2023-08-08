@@ -31,7 +31,7 @@ export default function App() {
         body: formData
       })
 
-      const data = await response.json();
+      const data = await response.text();
       console.log(data);
 
     } catch (error) {
