@@ -4,6 +4,8 @@ import './App.css'
 export default function App() {
 
   const [file, setFile] = useState<File | null>(null)
+  const [loading, setLoading] = useState<boolean>(false)
+  const [questions, setQuestions] = useState<string | null>(null)
 
   function handleFileChange(e: ChangeEvent<HTMLInputElement>) {
     const selectedFile = e.target.files?.[0];
@@ -22,6 +24,7 @@ export default function App() {
       return;
     }
 
+    setLoading(true)
     const formData = new FormData();
     formData.append('file', file);
 
@@ -33,9 +36,12 @@ export default function App() {
 
       const data = await response.text();
       console.log(data);
+      setQuestions(data);
 
     } catch (error) {
-      console.error(error)
+      console.error(error);
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -46,6 +52,8 @@ export default function App() {
         <input type='file' onChange={handleFileChange}></input>
         <button onClick={handleFileUpload}>Send File</button>
       </div>
+      {loading ? <p>Loading...</p> : null}
+      {questions ? <p>{questions}</p> : null}
     </>
   )
 }
