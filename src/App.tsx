@@ -29,8 +29,8 @@ export default function App() {
     formData.append('file', file);
 
     try {
-      // const response = await fetch('http://localhost:5000/bot2', {
-      const response = await fetch('https://responsereactor.onrender.com/bot2', {
+      const response = await fetch('http://localhost:5000/bot2', {
+      // const response = await fetch('https://responsereactor.onrender.com/bot2', {
         method: 'POST',
         body: formData
       })
