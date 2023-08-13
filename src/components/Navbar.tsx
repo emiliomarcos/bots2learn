@@ -1,5 +1,11 @@
+import { Link } from 'react-router-dom'
+
 export default function Navbar() {
   return (
-    <h2>Navbar</h2>
+    <nav>
+      <Link to='/'>Bots2Learn</Link>
+      <Link to='/questionizer'>Questionizer</Link>
+      <Link to='/summarizer'>Summarizer</Link>
+    </nav>
   )
 }
