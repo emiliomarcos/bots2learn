@@ -1,4 +1,5 @@
 import { useState, ChangeEvent } from 'react'
+import { Loader } from '../'
 import './Questionizer.css'
 
 export default function Questionizer() {
@@ -53,7 +54,7 @@ export default function Questionizer() {
         <input type='file' onChange={handleFileChange}></input>
         <button onClick={handleFileUpload}>Send File</button>
       </div>
-      {loading ? <p>Loading...</p> : null}
+      {loading ? <Loader /> : null}
       {questions ? <p>{questions}</p> : null}
     </>
   )

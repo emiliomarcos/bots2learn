@@ -1,9 +1,11 @@
 nav {
   display: flex;
   justify-content: space-around;
+  align-items: center;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  margin-top: 1rem;
+  height: 3rem;
+  background-color: #00341D;
 }
