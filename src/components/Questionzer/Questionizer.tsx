@@ -1,4 +1,5 @@
 import { useState, ChangeEvent } from 'react'
+import './Questionizer.css'
 
 export default function Questionizer() {
 
