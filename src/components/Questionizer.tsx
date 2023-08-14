@@ -47,7 +47,7 @@ export default function Questionizer() {
 
   return (
     <>
-      <h2>Generate Questions and Answers</h2>
+      <h2>Questionizer</h2>
       <div className='file-container'>
         <input type='file' onChange={handleFileChange}></input>
         <button onClick={handleFileUpload}>Send File</button>
